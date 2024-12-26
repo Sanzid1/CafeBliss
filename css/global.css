@@ -1,0 +1,155 @@
+/* global.css */
+
+/* Import Google Font (Poppins) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+  --primary-color: #F9A870; /* Pastel Orange */
+  --primary-hover: #f38b5d; /* Slightly darker orange */
+  --bg-color: #F5F5F5;
+  --text-color: #333;
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+  --box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 20px;
+}
+
+h1, h2, h3, h4, h5 {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--text-color);
+  border-bottom: 2px solid var(--primary-color);
+}
+.navbar-brand {
+  color: #fff !important;
+  font-weight: 600;
+}
+.navbar-nav .nav-link {
+  color: #fff !important;
+}
+.navbar-nav .nav-link:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  color: #fff;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: scale(1.02);
+}
+.btn-outline-secondary {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  background-color: transparent;
+}
+.btn-outline-secondary:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+/* Inputs */
+.form-control, .form-select {
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  transition: border-color var(--transition-speed);
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+/* Cards */
+.card {
+  border: none;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  background-color: #fff;
+  transition: transform var(--transition-speed);
+}
+.card:hover {
+  transform: translateY(-2px);
+}
+
+/* Alerts */
+.alert-success {
+  background-color: #e1f3e8;
+  border: 1px solid #b6e2c3;
+  color: #2e7d32;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--text-color);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9em;
+  margin-top: 40px;
+}
+.footer p {
+  margin: 5px 0;
+}
+
+/* Fade In Animation */
+.fade-in {
+  opacity: 0;
+  animation: fadeInAnim var(--transition-speed) forwards;
+}
+@keyframes fadeInAnim {
+  to { opacity: 1; }
+}
+
+/* Checkboxes/Radio/Toggles (Minimal) */
+input[type=checkbox], input[type=radio] {
+  accent-color: var(--primary-color);
+}
+
+/* Loader (simple circle loader) */
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid var(--primary-color);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+/* Hover effects for inputs (optional) */
+.form-control:hover, .form-select:hover {
+  border-color: var(--primary-color);
+}
+
+/* Quantity buttons */
+.minus-btn, .plus-btn {
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+.minus-btn:hover, .plus-btn:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+  transform: scale(1.05);
+}

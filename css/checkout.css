@@ -1,0 +1,26 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.table {
+    background-color: #fff;
+}
+
+.table-dark {
+    background-color: #343a40 !important;
+}
+
+.table-dark th {
+    color: #fff;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+    color: #fff;
+    border-radius: 0;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
