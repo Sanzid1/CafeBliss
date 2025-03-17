@@ -122,4 +122,105 @@ INSERT INTO `order_items` (`order_item_id`, `order_id`, `item_id`, `quantity`, `
 (13, 3, 3, 1, 899.00),
 (14, 4, 1, 2, 599.00),
 (15, 4, 2, 2, 649.00),
-(16, 4, 8, 1, 399
+(16, 4, 8, 1, 399.00),
+(17, 4, 6, 1, 499.00),
+(18, 5, 1, 2, 599.00),
+(19, 5, 2, 2, 649.00),
+(20, 5, 8, 1, 399.00),
+(21, 5, 6, 1, 499.00),
+(22, 6, 2, 2, 649.00),
+(23, 7, 1, 1, 599.00),
+(24, 7, 2, 3, 649.00),
+(25, 7, 7, 1, 549.00),
+(26, 8, 2, 1, 649.00),
+(27, 8, 1, 1, 599.00),
+(28, 9, 9, 1, 999.00),
+(29, 9, 1, 1, 599.00),
+(30, 9, 2, 1, 649.00),
+(31, 9, 3, 10, 899.00);
+
+-- Table structure for table `saved_items`
+CREATE TABLE `saved_items` (
+  `save_id` int(11) NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL,
+  `item_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Indexes for dumped tables
+
+-- Indexes for table `categories`
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`category_id`);
+
+-- Indexes for table `menu_items`
+ALTER TABLE `menu_items`
+  ADD PRIMARY KEY (`item_id`),
+  ADD KEY `category_id` (`category_id`);
+
+-- Indexes for table `orders`
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `user_id` (`user_id`);
+
+-- Indexes for table `order_items`
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`order_item_id`),
+  ADD KEY `order_id` (`order_id`),
+  ADD KEY `item_id` (`item_id`);
+
+-- Indexes for table `saved_items`
+ALTER TABLE `saved_items`
+  ADD PRIMARY KEY (`save_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `item_id` (`item_id`);
+
+-- Indexes for table `users`
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+-- AUTO_INCREMENT for dumped tables
+
+-- AUTO_INCREMENT for table `categories`
+ALTER TABLE `categories`
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+-- AUTO_INCREMENT for table `menu_items`
+ALTER TABLE `menu_items`
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+-- AUTO_INCREMENT for table `orders`
+ALTER TABLE `orders`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+-- AUTO_INCREMENT for table `order_items`
+ALTER TABLE `order_items`
+  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+-- AUTO_INCREMENT for table `saved_items`
+ALTER TABLE `saved_items`
+  MODIFY `save_id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- AUTO_INCREMENT for table `users`
+ALTER TABLE `users`
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+-- Constraints for dumped tables
+
+-- Constraints for table `menu_items`
+ALTER TABLE `menu_items`
+  ADD CONSTRAINT `menu_items_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Constraints for table `orders`
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+
+-- Constraints for table `order_items`
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`),
+  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `menu_items` (`item_id`);
+
+-- Constraints for table `saved_items`
+ALTER TABLE `saved_items`
+  ADD CONSTRAINT `saved_items_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `menu_items` (`item_id`),
+  ADD CONSTRAINT `saved_items_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
